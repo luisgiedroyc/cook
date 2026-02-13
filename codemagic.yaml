@@ -1,0 +1,34 @@
+workflows:
+  ios-development:
+    name: iOS Development Build
+    environment:
+      vars:
+        NODE_ENV: production
+      node: latest
+      cocoapods: default
+      xcode: latest
+      ruby: default
+      flutter: none
+    scripts:
+      - name: Install dependencies
+        script: |
+          npm install
+      - name: Build React app
+        script: |
+          npm run build
+      - name: Prepare Capacitor iOS project
+        script: |
+          npx cap init myapp com.myapp
+          npx cap add ios
+          npx cap sync ios
+    artifacts:
+      - ios/ipa/*.ipa
+    publishing:
+      email:
+        recipients:
+          - costyakozloff@gmail.com
+        on_success: always
+        on_failure: always
+    triggers:
+      - push:
+          branch: main
