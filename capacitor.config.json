@@ -1,6 +1,6 @@
 {
-  "appId": "com.myapp",
-  "appName": "MyApp",
+  "appId": "com.cook",
+  "appName": "cook",
   "webDir": "build",
   "bundledWebRuntime": false
 }
