@@ -7,13 +7,9 @@ workflows:
       cocoapods: default
     scripts:
       - name: Install dependencies
-        script: npm install
+        script: npm ci
       - name: Build React app
         script: npm run build
       - name: Prepare Capacitor iOS project
         script: |
-          npx cap init myapp com.myapp
-          npx cap add ios
           npx cap sync ios
-    artifacts:
-      - ios/ipa/*.ipa
